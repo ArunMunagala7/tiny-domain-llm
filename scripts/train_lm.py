@@ -5,7 +5,7 @@ from torch.utils.data import Dataset, DataLoader
 from tokenizers import ByteLevelBPETokenizer
 
 # ✅ --------------- CONFIG ---------------
-BBATCH_SIZE = 16
+BATCH_SIZE = 16
 BLOCK_SIZE = 128
 EMBED_DIM = 512
 NUM_HEADS = 8
