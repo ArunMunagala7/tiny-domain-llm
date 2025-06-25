@@ -5,13 +5,13 @@ from torch.utils.data import Dataset, DataLoader
 from tokenizers import ByteLevelBPETokenizer
 
 # ✅ --------------- CONFIG ---------------
-BATCH_SIZE = 8
-BLOCK_SIZE = 128   # Max sequence length
-EMBED_DIM = 256
-NUM_HEADS = 4
-NUM_LAYERS = 2
-LR = 1e-4
-EPOCHS = 3
+BBATCH_SIZE = 16
+BLOCK_SIZE = 128
+EMBED_DIM = 512
+NUM_HEADS = 8
+NUM_LAYERS = 4
+LR = 2e-4
+EPOCHS = 10
 DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
 print(f"✅ Using device: {DEVICE}")
 
@@ -102,6 +102,8 @@ for epoch in range(1, EPOCHS+1):
             print(f"Epoch [{epoch}/{EPOCHS}] Step [{batch_idx+1}/{len(loader)}] Loss: {avg_loss:.4f}")
 
     print(f"✅ Epoch {epoch} finished. Avg Loss: {total_loss/len(loader):.4f}")
+    with open("logs/train_loss.txt", "a") as f:
+        f.write(f"{epoch},{total_loss/len(loader):.4f}\n")
     torch.save(model.state_dict(), f"tiny_gpt_epoch{epoch}.pth")
 
 print("🎉 Training done. Checkpoints saved as tiny_gpt_epochX.pth")
