@@ -2,7 +2,7 @@ from datasets import load_dataset
 import os
 
 def main():
-    dataset = load_dataset("wikitext", "wikitext-2-raw-v1", split="train[:1%]")
+    dataset = load_dataset("wikitext", "wikitext-2-raw-v1", split="train[:10%]")
 
     os.makedirs("data", exist_ok=True)
 
