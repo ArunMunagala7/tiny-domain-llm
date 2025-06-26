@@ -13,7 +13,7 @@ This project builds a **small transformer-based language model** from scratch us
 
 - Train a mini causal language model on **domain-specific text**
 - Learn full ML pipeline: tokenization → training → generation
-- Use lightweight architecture (can run on CPU or Apple Silicon GPU)
+- Use lightweight architecture (runs on CPU, CUDA or Apple Silicon GPU)
 
 ---
 

@@ -8,7 +8,12 @@ BLOCK_SIZE = 128
 EMBED_DIM = 512
 NUM_HEADS = 8
 NUM_LAYERS = 4
-DEVICE = "mps" if torch.backends.mps.is_available() else "cpu"
+if torch.cuda.is_available():
+    DEVICE = "cuda"
+elif torch.backends.mps.is_available():
+    DEVICE = "mps"
+else:
+    DEVICE = "cpu"
 print(f"✅ Using device: {DEVICE}")
 
 # Define the same model as in training
